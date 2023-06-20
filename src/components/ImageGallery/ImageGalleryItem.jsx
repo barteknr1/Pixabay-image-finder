@@ -1,27 +1,24 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 import css from './ImageGallery.module.css'
 
-class ImageGalleryItem extends Component {
-    onClick = () => {
-        const { tags, largeImageURL } = this.props;
-        this.props.openModal(tags, largeImageURL);
+const ImageGalleryItem = ({ tags, largeImageURL, webformatURL, openModal }) => {
+    
+    const onClick = () => {
+        openModal(tags, largeImageURL);
     }
-    render() {
-        const { webformatURL, largeImageURL, tags } = this.props;
-        return (
-            <li
-                className={css.imageGalleryItem} onClick={this.onClick}>
-                <img
-                    className={css.imageGalleryItemImage}
-                    src={webformatURL}
-                    alt={tags}
-                    data-source={largeImageURL}
-                    loading="lazy"
-                />
-            </li>
-        )
-    }
+    return (
+        <li
+            className={css.imageGalleryItem} onClick={onClick}>
+            <img
+                className={css.imageGalleryItemImage}
+                src={webformatURL}
+                alt={tags}
+                data-source={largeImageURL}
+                loading="lazy"
+            />
+        </li>
+    )
 }
 
 ImageGalleryItem.propTypes = {
