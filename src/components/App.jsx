@@ -21,21 +21,39 @@ const App = () => {
       return
     }
     else if (q !== '' && page === 1) {
-      handleQuery();
+      const handleQuery = async () => {
+        setIsLoading(true)
+        setQueryData([])
+        try {
+          const images = await getPictures.fetch(q, page)
+          setQueryData(images.hits)
+        }
+        catch (err) {
+          setError(err.message)
+        }
+        finally {
+          setIsLoading(false)
+        }
+      }
+      handleQuery()
     }
     else if (page > 1) {
-      handleLoadMoreQuery();
+      const handleLoadMoreQuery = async () => {
+        setIsLoading(true);
+        try {
+          const images = await getPictures.fetch(q, page);
+          setQueryData((prevState) => [...prevState, ...images.hits])
+        }
+        catch (err) {
+          setError(err.message);
+        }
+        finally {
+          setIsLoading(false);
+        }
+      }
+      handleLoadMoreQuery()
     }
-  }, [q, page])
-  
-  // async componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.q !== prevState.q) {
-  //     this.handleQuery();
-  //   }
-  //   if (this.state.page !== prevState.page && this.state.q === prevState.q) {
-  //     this.handleLoadMoreQuery();
-  //   }
-  // }
+  }, [q, page]);
 
   const handleSubmit = (searchQuery) => {
     if (q === searchQuery) {
@@ -43,40 +61,11 @@ const App = () => {
     }
     setQ(searchQuery);
     setPage(1);
-  };
-
-  const handleQuery = async () => {
-    setIsLoading(true)
-    setQueryData([])
-    try {
-      const images = await getPictures.fetch(q, page)
-      setQueryData(images.hits)
-    }
-    catch (err) {
-      setError(err.message)
-    }
-    finally {
-      setIsLoading(false)
-    }
   }
 
   const handleLoadMore = async () => {
     setPage(prevState => prevState + 1)
   }
-
-  const handleLoadMoreQuery = async () => {
-    setIsLoading(true);
-    try {
-      const images = await getPictures.fetch(q, page);
-      setQueryData((prevState) => [...prevState, ...images.hits])
-    }
-    catch (err) {
-      setError(err.message);
-    }
-    finally {
-      setIsLoading(false);
-    }
-  };
 
   const openModal = (tags, largeImageURL) => {
     setIsModalOpen(true);
