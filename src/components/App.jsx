@@ -86,7 +86,7 @@ const App = () => {
           <ImageGallery images={queryData} openModal={openModal} />
           <Button onClick={handleLoadMore} label={"Load More"} />
         </>
-      ) : <p className="noResult">No results</p>}
+      ) : <p className="noResult">Type in anything to search for images</p>}
       {isModalOpen && <Modal isModalOpen={isModalOpen} closeModal={closeModal} alt={alt} largeImageURL={largeImageURL} />}
     </>
   )
