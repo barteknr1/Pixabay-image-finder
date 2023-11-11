@@ -19,7 +19,7 @@ const ImageGalleryItem = ({ tags, largeImageURL, webformatURL, openModal }) => {
             />
         </li>
     )
-}
+};
 
 ImageGalleryItem.propTypes = {
     webformatURL: PropTypes.string.isRequired,

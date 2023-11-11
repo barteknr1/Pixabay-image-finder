@@ -3,7 +3,7 @@ import React from 'react'
 import ImageGalleryItem from './ImageGalleryItem'
 import css from './ImageGallery.module.css'
 
-const ImageGallery = ({images, openModal}) => {
+const ImageGallery = ({ images, openModal }) => {
     return (
         <ul
             className={css.imageGallery}>

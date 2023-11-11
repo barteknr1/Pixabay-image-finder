@@ -9,24 +9,29 @@ import Modal from './Modal/Modal';
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [queryData, setQueryData] = useState([]);
-  const [q, setQ] = useState('');
+  const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [alt, setAlt] = useState('');
   const [largeImageURL, setLargeImageURL] = useState('');
+  const [totalHits, setTotalHits] = useState(0)
 
   useEffect(() => {
-    if (q === '') {
+    console.log(queryData);
+    if (query === '') {
       return
     }
-    else if (q !== '' && page === 1) {
+    else if (query !== '' && page === 1) {
       const handleQuery = async () => {
         setIsLoading(true)
         setQueryData([])
         try {
-          const images = await getPictures.fetch(q, page)
+          const images = await getPictures.fetch(query, page)
           setQueryData(images.hits)
+          setTotalHits(images.totalHits)
+          console.log(images);
+          console.log(images.totalHits);
         }
         catch (err) {
           setError(err.message)
@@ -41,7 +46,7 @@ const App = () => {
       const handleLoadMoreQuery = async () => {
         setIsLoading(true);
         try {
-          const images = await getPictures.fetch(q, page);
+          const images = await getPictures.fetch(query, page);
           setQueryData((prevState) => [...prevState, ...images.hits])
         }
         catch (err) {
@@ -53,20 +58,18 @@ const App = () => {
       }
       handleLoadMoreQuery()
     }
-  }, [q, page]);
+  }, [query, page]);
 
   const handleSubmit = (searchQuery) => {
-    if (q === searchQuery) {
+    if (query === searchQuery) {
       return
     }
-    setQ(searchQuery);
+    setQuery(searchQuery);
     setPage(1);
   }
-
   const handleLoadMore = async () => {
     setPage(prevState => prevState + 1)
   }
-
   const openModal = (tags, largeImageURL) => {
     setIsModalOpen(true);
     setAlt(tags);
@@ -84,9 +87,11 @@ const App = () => {
       {queryData.length > 0 ? (
         <>
           <ImageGallery images={queryData} openModal={openModal} />
-          <Button onClick={handleLoadMore} label={"Load More"} />
+          {queryData.length !== totalHits && <Button onClick={handleLoadMore} label={"Load More"} />}
         </>
-      ) : <p className="noResult">Type in anything to search for images</p>}
+      ) : (
+        <p className="noResult">Welcome to Pixabay image finder! <br /> Type in anything to search for images</p>
+      )}
       {isModalOpen && <Modal isModalOpen={isModalOpen} closeModal={closeModal} alt={alt} largeImageURL={largeImageURL} />}
     </>
   )
