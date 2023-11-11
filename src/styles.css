@@ -39,30 +39,9 @@ ol {
 }
 .noResult,
 .error {
-  margin: 0 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  font-size: 2.5em;
-}
-.loaderOverlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1200;
-}
-.loaderWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: calc(50% - 40px);
-  left: calc(50% - 40px);
+  font-size: 2.5rem;
 }
