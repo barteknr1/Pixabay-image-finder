@@ -79,6 +79,7 @@ const App = () => {
   return (
     <>
       <Searchbar onSubmit={handleSubmit} />
+      <h1>Welcome to Pixabay image finder!</h1>
       {error && <p className="error">Oh crap! Something went wrong: {error}</p>}
       {isLoading && < Loader />}
       {queryData.length > 0 ? (
@@ -87,7 +88,7 @@ const App = () => {
           {queryData.length !== totalHits && <Button onClick={handleLoadMore} label={"Load More"} />}
         </>
       ) : (
-        <p className="noResult">Welcome to Pixabay image finder!<br />Type in anything to search for images.</p>
+        <p className="noResult">Type in anything to search for images.</p>
       )}
       {isModalOpen && <Modal isModalOpen={isModalOpen} closeModal={closeModal} alt={alt} largeImageURL={largeImageURL} />}
     </>
