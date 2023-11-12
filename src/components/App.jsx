@@ -87,7 +87,7 @@ const App = () => {
           {queryData.length !== totalHits && <Button onClick={handleLoadMore} label={"Load More"} />}
         </>
       ) : (
-        <p className="noResult">Welcome to Pixabay image finder!<br />Type in anything to search for images</p>
+        <p className="noResult">Welcome to Pixabay image finder!<br />Type in anything to search for images.</p>
       )}
       {isModalOpen && <Modal isModalOpen={isModalOpen} closeModal={closeModal} alt={alt} largeImageURL={largeImageURL} />}
     </>
