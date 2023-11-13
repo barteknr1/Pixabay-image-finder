@@ -5,6 +5,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
 import Modal from './Modal/Modal';
+import H1 from './Header/Header';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -79,7 +80,7 @@ const App = () => {
   return (
     <>
       <Searchbar onSubmit={handleSubmit} />
-      <h1>Welcome to Pixabay image finder!</h1>
+      <H1 />
       {error && <p className="error">Oh crap! Something went wrong: {error}</p>}
       {isLoading && < Loader />}
       {queryData.length > 0 ? (
