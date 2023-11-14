@@ -5,7 +5,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
 import Modal from './Modal/Modal';
-import H1 from './Header/Header';
+import H1 from './Heading/Heading';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
