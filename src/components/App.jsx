@@ -6,6 +6,7 @@ import Loader from './Loader/Loader';
 import Button from './Button/Button';
 import Modal from './Modal/Modal';
 import H1 from './Heading/Heading';
+import Footer from './Footer/Footer';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -80,20 +81,23 @@ const App = () => {
   return (
     <>
       <Searchbar onSubmit={handleSubmit} />
-      <H1 />
-      {error && <p className="error">Oh crap! Something went wrong: {error}</p>}
-      {isLoading && < Loader />}
-      {queryData.length > 0 ? (
-        <>
-          <ImageGallery images={queryData} openModal={openModal} />
-          {queryData.length !== totalHits && <Button onClick={handleLoadMore} label={"Load More"} />}
-        </>
-      ) : (
-        <p className="noResult">Type in anything to search for images.</p>
-      )}
-      {isModalOpen && <Modal isModalOpen={isModalOpen} closeModal={closeModal} alt={alt} largeImageURL={largeImageURL} />}
+      <div className="content">
+        <H1 />
+        {error && <p className="error">Oh crap! Something went wrong: {error}</p>}
+        {isLoading && < Loader />}
+        {queryData.length > 0 ? (
+          <>
+            <ImageGallery images={queryData} openModal={openModal} />
+            {queryData.length !== totalHits && <Button onClick={handleLoadMore} label={"Load More"} />}
+          </>
+        ) : (
+          <p className="noResult">Type in anything to search for images.</p>
+        )}
+        {isModalOpen && <Modal isModalOpen={isModalOpen} closeModal={closeModal} alt={alt} largeImageURL={largeImageURL} />}
+      </div>
+      <Footer />
     </>
   )
-}
+};
   
 export default App

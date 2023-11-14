@@ -13,11 +13,6 @@ html {
   padding: 0;
 }
 #root {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  padding-bottom: 24px;
-
   --bg: #000000;
   --clr-1: #00c2ff;
   --clr-2: #33ff8c;
@@ -40,6 +35,8 @@ body {
   margin: 0 auto;
   color: #fff;
   background-color: #000;
+  min-height: 100vh;
+  position: relative;
 }
 
 img {
@@ -57,4 +54,10 @@ ol {
   text-align: center;
   font-weight: 500;
   font-size: clamp(1rem, 2vw, 2rem);
+}
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 80px;
 }
