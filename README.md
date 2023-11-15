@@ -17,6 +17,11 @@ Simple app to find pictures of your choice.
 
 ## Instructions
 
+Visit:
+- https://barteknr1.github.io/Pixabay-image-finder/
+
+or
+
 - clone repository
 - install dependancies
 ```bash
