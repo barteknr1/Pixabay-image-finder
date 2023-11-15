@@ -6,8 +6,8 @@ Simple app to find pictures of your choice.
 
 - [Technologies](#technologies)
 - [Instructions](#instructions)
-<!-- - [Usage Examples](#usage-examples)
-- [Contributing](#contributing) -->
+- [Usage Examples](#usage-examples)
+
 
 ## Technologies
 
@@ -27,6 +27,11 @@ npm install
 npm start
 ```
 
-<!--## Usage Examples
+## Usage Examples
 
-Present usage examples of the project, demonstrating how it can be used in practice. You can include code snippets or showcase sample scenarios.
+-
+![home](./src/assets/home.jpg)
+-
+![sunset](./src/assets/sunset.jpg)
+-
+![painted-face](./src/assets/painted-face.jpg)
